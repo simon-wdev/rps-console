@@ -10,4 +10,13 @@ function getComputerChoice(){
     } else {
         return npcPick = "Scissors";
     }
-}
+};
+
+function getPlayerChoice(){
+    let playerChoice = prompt("Pick Rock, Paper or Scissors!").toLowerCase();
+    //playerChoice = playerChoice.toLowerCase();
+    if (playerChoice != "rock" && playerChoice != "paper" && playerChoice != "scissors"){
+        alert("Thats not valid. Please enter Rock, Paper or Scissors!")
+        getPlayerChoice();
+    }
+};
