@@ -28,7 +28,9 @@ function getPlayerChoice(){
     }
     return playerPick = playerChoice;
 };
-
+//Logic for a single round, two equals are a tie, rock beats scissors etc. and vice versa
+//Function returns the winner score at the end of each statement
+//If the round is a tie, no score will be returned
 function playRound(npcPick, playerPick){
     if(playerPick === npcPick){
         console.log(`NPC picked ${npcPick}.`);
