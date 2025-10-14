@@ -1,5 +1,7 @@
-let npcPick = "";
+let npcPick = getComputerChoice();
 let playerPick;
+let playerScore = 0;
+let npcScore = 0;
 
 //Computer choice gets picked based on random picked numbers (0, 1, 2)
 //0 == Rock, 1 == Paper, 2 == Scissors
@@ -7,11 +9,11 @@ let playerPick;
 function getComputerChoice(){
     let choice = Math.floor(Math.random()*3)
     if (choice == 0){
-        return npcPick = "Rock";   
+        return "rock";   
     } else if ( choice == 1){
-        return npcPick = "Paper";
+        return "paper";
     } else {
-        return npcPick = "Scissors";
+        return "scissors";
     }
 };
 
@@ -24,4 +26,49 @@ function getPlayerChoice(){
         alert("Thats not valid. Please enter Rock, Paper or Scissors!")
         getPlayerChoice();
     }
+    return playerPick = playerChoice;
 };
+
+function playRound(npcPick, playerPick){
+    if(playerPick === npcPick){
+        console.log(`NPC picked ${npcPick}.`);
+        console.log("Tie! Nobody wins!");
+        return;
+    }
+
+    if(playerPick === "rock"){
+        if(npcPick === "paper"){
+            console.log(`NPC picked ${npcPick}.`);
+            console.log("You lose! Paper beats rock.");
+            return npcScore += 1;
+         }else{
+            console.log(`NPC picked ${npcPick}.`)
+            console.log("You win! Rock beats scissors.");
+            return playerScore += 1;
+        } 
+    }else if(playerPick === "paper"){
+        if(npcPick === "scissors"){
+            console.log(`NPC picked ${npcPick}.`)
+            console.log("You lose! Scissors beat paper.");
+            return npcScore += 1;
+        }else{
+            console.log(`NPC picked ${npcPick}.`)
+            console.log("You win! Paper beats rock.");
+            return playerScore += 1;
+        }
+    }else if(playerPick === "scissors"){
+        if(npcPick == "rock"){
+            console.log(`NPC picked ${npcPick}.`)
+            console.log("You lose! Rock beats scissors");
+            return npcScore += 1;
+        }else{
+            console.log(`NPC picked ${npcPick}.`)
+            console.log("You win! Scissors beat paper!");
+            return playerScore += 1;
+        }
+    }
+}
+
+getPlayerChoice();
+console.log(playerPick)
+playRound(npcPick, playerPick);
