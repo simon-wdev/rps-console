@@ -1,7 +1,5 @@
-let npcPick = getComputerChoice();
-let playerPick;
-let playerScore = 0;
-let npcScore = 0;
+
+
 
 //Computer choice gets picked based on random picked numbers (0, 1, 2)
 //0 == Rock, 1 == Paper, 2 == Scissors
@@ -28,49 +26,80 @@ function getPlayerChoice(){
     }
     return playerPick = playerChoice;
 };
+
+
+//The playGame Function calls playRound for five times to play a whole game
+//for loop i <=5 to play 5 rounds
+function playGame(){
+    let playerScore = 0;
+    let npcScore = 0;
+    
+
+for (let i = 1; i <= 5; i++){
+    let round = i;
+    let npcPick = getComputerChoice();
+    let playerPick = getPlayerChoice();
+    //Variables will be declared every loop, so choices will be called every iteration
+    //let round is the current iteration, round gets logged every loop
+    console.log(`We are now in Round: ${round}`);
+
+    playRound(npcPick, playerPick);
+
+
 //Logic for a single round, two equals are a tie, rock beats scissors etc. and vice versa
 //Function returns the winner score at the end of each statement
 //If the round is a tie, no score will be returned
-function playRound(npcPick, playerPick){
-    if(playerPick === npcPick){
-        console.log(`NPC picked ${npcPick}.`);
-        console.log("Tie! Nobody wins!");
-        return;
-    }
-
-    if(playerPick === "rock"){
-        if(npcPick === "paper"){
+    function playRound(npcPick, playerPick){
+        if(playerPick === npcPick){
             console.log(`NPC picked ${npcPick}.`);
-            console.log("You lose! Paper beats rock.");
-            return npcScore += 1;
-         }else{
-            console.log(`NPC picked ${npcPick}.`)
-            console.log("You win! Rock beats scissors.");
-            return playerScore += 1;
-        } 
-    }else if(playerPick === "paper"){
-        if(npcPick === "scissors"){
-            console.log(`NPC picked ${npcPick}.`)
-            console.log("You lose! Scissors beat paper.");
-            return npcScore += 1;
-        }else{
-            console.log(`NPC picked ${npcPick}.`)
-            console.log("You win! Paper beats rock.");
-            return playerScore += 1;
+            console.log("Tie! Nobody wins!");
+            return;
         }
-    }else if(playerPick === "scissors"){
-        if(npcPick == "rock"){
-            console.log(`NPC picked ${npcPick}.`)
-            console.log("You lose! Rock beats scissors");
-            return npcScore += 1;
-        }else{
-            console.log(`NPC picked ${npcPick}.`)
-            console.log("You win! Scissors beat paper!");
-            return playerScore += 1;
+
+        if(playerPick === "rock"){
+            if(npcPick === "paper"){
+                console.log(`NPC picked ${npcPick}.`);
+                console.log("You lose! Paper beats rock.");
+                npcScore += 1;
+            }else{
+                console.log(`NPC picked ${npcPick}.`)
+                console.log("You win! Rock beats scissors.");
+                playerScore += 1;
+            } 
+        }else if(playerPick === "paper"){
+            if(npcPick === "scissors"){
+                console.log(`NPC picked ${npcPick}.`)
+                console.log("You lose! Scissors beat paper.");
+                npcScore += 1;
+            }else{
+                console.log(`NPC picked ${npcPick}.`)
+                console.log("You win! Paper beats rock.");
+                playerScore += 1;
+            }
+        }else if(playerPick === "scissors"){
+            if(npcPick == "rock"){
+                console.log(`NPC picked ${npcPick}.`)
+                console.log("You lose! Rock beats scissors");
+                npcScore += 1;
+            }else{
+                console.log(`NPC picked ${npcPick}.`)
+                console.log("You win! Scissors beat paper!");
+                playerScore += 1;
+            }
         }
+    }   
+        //Logs the current score at the end of every round
+        console.log(`Current Score\nNPC ${npcScore} : ${playerScore} Player`)
     }
+        //Declare a winner
+        if (playerScore < npcScore){
+            console.log(`You lose! NPC wins ${npcScore} : ${playerScore} `)
+        }else{
+            console.log(`You win! Player wins ${playerScore} : ${npcScore} `)
+        }
 }
 
-getPlayerChoice();
-console.log(playerPick)
-playRound(npcPick, playerPick);
+playGame();
+
+
+
