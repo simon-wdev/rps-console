@@ -1,6 +1,3 @@
-
-
-
 //Computer choice gets picked based on random picked numbers (0, 1, 2)
 //0 == Rock, 1 == Paper, 2 == Scissors
 // The choice will be stored global in "npcPick"
@@ -26,25 +23,6 @@ function getPlayerChoice(){
     }
     return playerPick = playerChoice;
 };
-
-
-//The playGame Function calls playRound for five times to play a whole game
-//for loop i <=5 to play 5 rounds
-function playGame(){
-    let playerScore = 0;
-    let npcScore = 0;
-    
-
-for (let i = 1; i <= 5; i++){
-    let round = i;
-    let npcPick = getComputerChoice();
-    let playerPick = getPlayerChoice();
-    //Variables will be declared every loop, so choices will be called every iteration
-    //let round is the current iteration, round gets logged every loop
-    console.log(`We are now in Round: ${round}`);
-
-    playRound(npcPick, playerPick);
-
 
 //Logic for a single round, two equals are a tie, rock beats scissors etc. and vice versa
 //Function returns the winner score at the end of each statement
@@ -87,16 +65,33 @@ for (let i = 1; i <= 5; i++){
                 playerScore += 1;
             }
         }
-    }   
-        //Logs the current score at the end of every round
-        console.log(`Current Score\nNPC ${npcScore} : ${playerScore} Player`)
     }
-        //Declare a winner
-        if (playerScore < npcScore){
-            console.log(`You lose! NPC wins ${npcScore} : ${playerScore} `)
-        }else{
-            console.log(`You win! Player wins ${playerScore} : ${npcScore} `)
-        }
+
+//The playGame Function calls playRound for five times to play a whole game
+//for loop i <=5 to play 5 rounds
+function playGame(){
+    let playerScore = 0;
+    let npcScore = 0;
+    
+
+for (let i = 1; i <= 5; i++){
+    let round = i;
+    let npcPick = getComputerChoice();
+    let playerPick = getPlayerChoice();
+    //Variables will be declared every loop, so choices will be called every iteration
+    //let round is the current iteration, round gets logged every loop
+    console.log(`We are now in Round: ${round}`);
+
+    playRound(npcPick, playerPick);
+
+
+   
+    //Logs the current score at the end of every round
+    console.log(`Current Score\nNPC ${npcScore} : ${playerScore} Player`)
+    }
+
+    //Declare a winner
+    (playerScore < npcScore) ? `You lose! NPC ${npcScore} : ${playerScore} Player` : `You win! Player wins ${playerScore} : ${npcScore} `
 }
 
 playGame();
