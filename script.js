@@ -1,3 +1,23 @@
+let playerScore = 0;
+let npcScore = 0;
+const playerRock = document.querySelector(".btnRock");
+const playerPaper = document.querySelector(".btnPaper");
+const playerScissors = document.querySelector(".btnScissors");
+const res = document.querySelector(".res");
+
+playerRock.addEventListener("click", function(){
+    playRound(getComputerChoice(), "rock");
+});
+
+playerPaper.addEventListener("click", function(){
+    playRound(getComputerChoice(), "paper");
+});
+
+playerScissors.addEventListener("click", function(){
+    playRound(getComputerChoice(), "scissors");
+});
+
+
 //Computer choice gets picked based on random picked numbers (0, 1, 2)
 //0 == Rock, 1 == Paper, 2 == Scissors
 // The choice will be stored global in "npcPick"
@@ -67,12 +87,8 @@ function getPlayerChoice(){
         }
     }
 
-//The playGame Function calls playRound for five times to play a whole game
-//for loop i <=5 to play 5 rounds
+
 function playGame(){
-    let playerScore = 0;
-    let npcScore = 0;
-    
 
 for (let i = 1; i <= 5; i++){
     let round = i;
@@ -93,8 +109,6 @@ for (let i = 1; i <= 5; i++){
     //Declare a winner
     (playerScore < npcScore) ? `You lose! NPC ${npcScore} : ${playerScore} Player` : `You win! Player wins ${playerScore} : ${npcScore} `
 }
-
-playGame();
 
 
 
