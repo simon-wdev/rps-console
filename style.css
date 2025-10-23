@@ -1,0 +1,19 @@
+p{
+    white-space: pre-wrap;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#btnBox{
+    display: flex;
+    justify-content: center;
+}
+
+.btn{
+    margin: 20px;
+}
+
+.scoreRound{
+    text-align: center;
+}
