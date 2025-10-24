@@ -11,14 +11,20 @@ const resBox = document.querySelector(".res");
 
 playerRock.addEventListener("click", function(){
     playRound(getComputerChoice(), "rock");
+    getScore(playerScore, npcScore)
+    getWinner(playerScore, npcScore)
 });
 
 playerPaper.addEventListener("click", function(){
     playRound(getComputerChoice(), "paper");
+    getScore(playerScore, npcScore)
+    getWinner(playerScore, npcScore)
 });
 
 playerScissors.addEventListener("click", function(){
     playRound(getComputerChoice(), "scissors");
+    getScore(playerScore, npcScore)
+    getWinner(playerScore, npcScore)
 });
 
 
@@ -79,28 +85,23 @@ function getComputerChoice(){
         }
     }
 
+    function getScore(playerScore, npcScore){
+        scoreRound.textContent = `Player ${playerScore} : ${npcScore} NPC`;
+        }
 
-function playGame(){
-
-for (let i = 1; i <= 5; i++){
-    let round = i;
-    let npcPick = getComputerChoice();
-    let playerPick = getPlayerChoice();
-    //Variables will be declared every loop, so choices will be called every iteration
-    //let round is the current iteration, round gets logged every loop
-    console.log(`We are now in Round: ${round}`);
-
-    playRound(npcPick, playerPick);
-
-
-   
-    //Logs the current score at the end of every round
-    console.log(`Current Score\nNPC ${npcScore} : ${playerScore} Player`)
+    function getWinner(playerScore, npcScore){
+        if (playerScore == 3){
+            scoreRound.textContent = "Player won the game!";
+        }else if(npcScore == 3){
+            scoreRound.textContent = "NPC wins! Git gud.";
+        }else{
+            return;
+        }
     }
 
-    //Declare a winner
-    (playerScore < npcScore) ? `You lose! NPC ${npcScore} : ${playerScore} Player` : `You win! Player wins ${playerScore} : ${npcScore} `
-}
-
+   //Score has to be reset after getWinner();
+   //remove buttons => play again button, reset score
+   //remove Child btn in get winner, append play again button
+   //play again btn, reset all
 
 
