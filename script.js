@@ -2,7 +2,8 @@
 let playerScore = 0;
 let npcScore = 0;
 let result = document.createElement("p");
-let scoreRound = document.querySelector(".scoreRound")
+let scoreRound = document.querySelector(".scoreRound");
+let winnerDec = document.querySelector(".winnerDec");
 
 const playerRock = document.querySelector(".btnRock");
 const playerPaper = document.querySelector(".btnPaper");
@@ -49,6 +50,7 @@ function getComputerChoice(){
         if(playerPick === npcPick){
             resBox.appendChild(result);
             result.textContent = `NPC picked ${npcPick}.\nTie! Nobody wins!`;
+            winnerDec.textContent = "Tie. Try harder!";
             return;
         }
 
@@ -56,30 +58,36 @@ function getComputerChoice(){
             if(npcPick === "paper"){
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou lose! Paper beats rock.`;
+                winnerDec.textContent = "Ouch!"
                 npcScore += 1;
             }else{
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou win! Rock beats scissors.`;
+                winnerDec.textContent = "Yes, Baby!"
                 playerScore += 1;
             } 
         }else if(playerPick === "paper"){
             if(npcPick === "scissors"){
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou lose! Scissors beats paper.`;
+                winnerDec.textContent = "Damn!"
                 npcScore += 1;
             }else{
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou win! Paper beats rock.`;
+                winnerDec.textContent = "Not bad!";
                 playerScore += 1;
             }
         }else if(playerPick === "scissors"){
             if(npcPick == "rock"){
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou lose! Rock beats scissors.`;
+                winnerDec.textContent = "You suck!"
                 npcScore += 1;
             }else{
                 resBox.appendChild(result);
                 result.textContent = `NPC picked ${npcPick}.\nYou win! Scissors beat paper.`;
+                winnerDec.textContent = "Woohoo! You got this."
                 playerScore += 1;
             }
         }
@@ -90,12 +98,12 @@ function getComputerChoice(){
         }
 
     function getWinner(){
-        if (playerScore == 3){
-            scoreRound.textContent = "Player won the game!";
+        if (playerScore == 5){
+            winnerDec.textContent = "Player won the game!";
             playerScore = 0;
             npcScore = 0;
-        }else if(npcScore == 3){
-            scoreRound.textContent = "NPC wins! Git gud.";
+        }else if(npcScore == 5){
+            winnerDec.textContent = "NPC wins! Git gud.";
             playerScore = 0;
             npcScore = 0;
         }else{
