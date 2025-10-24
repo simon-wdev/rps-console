@@ -11,20 +11,20 @@ const resBox = document.querySelector(".res");
 
 playerRock.addEventListener("click", function(){
     playRound(getComputerChoice(), "rock");
-    getScore(playerScore, npcScore)
-    getWinner(playerScore, npcScore)
+    getScore();
+    getWinner();
 });
 
 playerPaper.addEventListener("click", function(){
     playRound(getComputerChoice(), "paper");
-    getScore(playerScore, npcScore)
-    getWinner(playerScore, npcScore)
+    getScore();
+    getWinner();
 });
 
 playerScissors.addEventListener("click", function(){
     playRound(getComputerChoice(), "scissors");
-    getScore(playerScore, npcScore)
-    getWinner(playerScore, npcScore)
+    getScore();
+    getWinner();
 });
 
 
@@ -85,23 +85,22 @@ function getComputerChoice(){
         }
     }
 
-    function getScore(playerScore, npcScore){
+    function getScore(){
         scoreRound.textContent = `Player ${playerScore} : ${npcScore} NPC`;
         }
 
-    function getWinner(playerScore, npcScore){
+    function getWinner(){
         if (playerScore == 3){
             scoreRound.textContent = "Player won the game!";
+            playerScore = 0;
+            npcScore = 0;
         }else if(npcScore == 3){
             scoreRound.textContent = "NPC wins! Git gud.";
+            playerScore = 0;
+            npcScore = 0;
         }else{
             return;
         }
     }
-
-   //Score has to be reset after getWinner();
-   //remove buttons => play again button, reset score
-   //remove Child btn in get winner, append play again button
-   //play again btn, reset all
 
 
